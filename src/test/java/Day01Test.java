@@ -30,7 +30,16 @@ public class Day01Test {
         Day01 day01 = new Day01();
         int result;
 
-        result = day01.calculateTotalFuelRequirementWithAddedFuel();
+        result = day01.calculateRequiredFuelWithAdditionalFuel(14);
+        assertEquals(2, result);
+
+        result = day01.calculateRequiredFuelWithAdditionalFuel(1969);
+        assertEquals(966, result);
+
+        result = day01.calculateRequiredFuelWithAdditionalFuel(100756);
+        assertEquals(50346, result);
+
+        result = day01.calculateTotalFuelRequirementWithAdditionalFuel();
         assertEquals(5055050, result);
     }
 }

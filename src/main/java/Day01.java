@@ -11,25 +11,33 @@ class Day01 {
         List<Integer> modules = getModules();
 
         for (int module : modules) {
-            int requiredFuelPerModule = calculateRequiredFuel(module);
-            totalFuelRequirement += requiredFuelPerModule;
+            int requiredFuel = calculateRequiredFuel(module);
+            totalFuelRequirement += requiredFuel;
         }
 
         return totalFuelRequirement;
     }
 
-    int calculateTotalFuelRequirementWithAddedFuel() {
+    int calculateTotalFuelRequirementWithAdditionalFuel() {
         int totalFuelRequirement = 0;
         List<Integer> modules = getModules();
 
         for (int module : modules) {
-            int inputMass = module;
-            do {
-                int requiredFuel = calculateRequiredFuel(inputMass);
-                if (requiredFuel > 0) totalFuelRequirement += requiredFuel;
-                inputMass = requiredFuel;
-            } while (inputMass > 0);
+            int requiredFuel = calculateRequiredFuelWithAdditionalFuel(module);
+            totalFuelRequirement += requiredFuel;
         }
+
+        return totalFuelRequirement;
+    }
+
+    int calculateRequiredFuelWithAdditionalFuel(int mass) {
+        int totalFuelRequirement = 0;
+
+        do {
+            int requiredFuel = calculateRequiredFuel(mass);
+            if (requiredFuel > 0) totalFuelRequirement += requiredFuel;
+            mass = requiredFuel;
+        } while (mass > 0);
 
         return totalFuelRequirement;
     }
