@@ -4,21 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Day01 {
+class Day01 {
 
     int calculateTotalFuelRequirement() {
         int totalFuelRequirement = 0;
-
         List<Integer> modules = getModules();
+
         for (int module : modules) {
-            int requiredFuelPerModule = calculateRequiredFuelPerModule(module);
+            int requiredFuelPerModule = calculateRequiredFuel(module);
             totalFuelRequirement += requiredFuelPerModule;
         }
 
         return totalFuelRequirement;
     }
 
-    int calculateRequiredFuelPerModule(int mass) {
+    int calculateTotalFuelRequirementWithAddedFuel() {
+        int totalFuelRequirement = 0;
+        List<Integer> modules = getModules();
+
+        for (int module : modules) {
+            int inputMass = module;
+            do {
+                int requiredFuel = calculateRequiredFuel(inputMass);
+                if (requiredFuel > 0) totalFuelRequirement += requiredFuel;
+                inputMass = requiredFuel;
+            } while (inputMass > 0);
+        }
+
+        return totalFuelRequirement;
+    }
+
+    int calculateRequiredFuel(int mass) {
         return mass / 3 - 2;
     }
 

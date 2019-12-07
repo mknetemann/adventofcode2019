@@ -9,19 +9,28 @@ public class Day01Test {
         Day01 day01 = new Day01();
         int result;
 
-        result = day01.calculateRequiredFuelPerModule(12);
-        assertEquals(result, 2);
+        result = day01.calculateRequiredFuel(12);
+        assertEquals(2, result);
 
-        result = day01.calculateRequiredFuelPerModule(14);
-        assertEquals(result, 2);
+        result = day01.calculateRequiredFuel(14);
+        assertEquals(2, result);
 
-        result = day01.calculateRequiredFuelPerModule(1969);
-        assertEquals(result, 654);
+        result = day01.calculateRequiredFuel(1969);
+        assertEquals(654, result);
 
-        result = day01.calculateRequiredFuelPerModule(100756);
-        assertEquals(result, 33583);
+        result = day01.calculateRequiredFuel(100756);
+        assertEquals(33583, result);
 
         result = day01.calculateTotalFuelRequirement();
-        assertEquals(result, 3371958);
+        assertEquals(3371958, result);
+    }
+
+    @Test
+    public void TestPart2() {
+        Day01 day01 = new Day01();
+        int result;
+
+        result = day01.calculateTotalFuelRequirementWithAddedFuel();
+        assertEquals(5055050, result);
     }
 }
